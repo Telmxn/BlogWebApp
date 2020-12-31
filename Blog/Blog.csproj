@@ -22,4 +22,9 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\Trumbowyg-master\.github\FUNDING.yml" />
+    <None Include="wwwroot\lib\Trumbowyg-master\.github\ISSUE_TEMPLATE.md" />
+  </ItemGroup>
+
 </Project>

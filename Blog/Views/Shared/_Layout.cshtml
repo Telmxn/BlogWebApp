@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title</title>
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.css" rel="stylesheet" />
 </head>
 <body>
     <div>
@@ -26,5 +27,6 @@
     <div>
         @RenderBody()
     </div>
+    @RenderSection("scripts",false)
 </body>
 </html>

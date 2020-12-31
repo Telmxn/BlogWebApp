@@ -10,7 +10,7 @@
     <p>@Model.Body</p>*@
 
 <div class="container">
-    <div class="post no-shadow">
+    <div class="post no-shadow" style="margin: 0;">
         @if (!string.IsNullOrEmpty(Model.Image))
         {
             var image_path = $"/Image/{Model.Image}";
@@ -19,6 +19,6 @@
         }
     </div>
     <div class="post-body">
-        @Model.Body
+        @Html.Raw(Model.Body)
     </div>
 </div>
