@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.Data.Repository;
 using Microsoft.AspNetCore.Identity;
+using Blog.Data.FileManager;
 
 namespace Blog
 {
@@ -43,6 +44,7 @@ namespace Blog
             });
 
             services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IFileManager, FileManager>();
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
@@ -54,6 +56,8 @@ namespace Blog
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
 
