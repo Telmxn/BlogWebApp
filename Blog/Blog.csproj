@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>32119513-e583-49a7-9c21-fb5f2e9b49b1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,11 +21,15 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.1" />
+    <PackageReference Include="PhotoSauce.MagicScaler" Version="0.11.2" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\lib\Trumbowyg-master\.github\FUNDING.yml" />
     <None Include="wwwroot\lib\Trumbowyg-master\.github\ISSUE_TEMPLATE.md" />
+    <Content Update="wwwroot/content/blog/*.*" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot/lib/**/*.*" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot/lib/**/dist/**/*.*" CopyToPublishDirectory="Always" />
   </ItemGroup>
 
 </Project>
