@@ -1,5 +1,6 @@
 ﻿using Blog.Models;
 using Blog.Models.Comments;
+using Blog.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,9 +34,25 @@ namespace Blog.Data.Repository
             return _ctx.Posts.ToList();
         }
 
-        public List<Post> GetAllPosts(string Category)
+        public IndexViewModel GetAllPosts(int pageNumber,string Category)
         {
-            return _ctx.Posts.Where(post => post.Category.ToLower().Equals(Category.ToLower())).ToList();
+            int pageSize = 5;
+            int skipAmount = pageSize * (pageNumber - 1);
+
+            var query = _ctx.Posts.AsQueryable();
+
+            if (!String.IsNullOrEmpty(Category))
+                query = query.Where(post => post.Category.ToLower().Equals(Category.ToLower()));
+
+            int postsCount = query.Count();
+
+            return new IndexViewModel
+            {
+                PageNumber = pageNumber,
+                NextPage = postsCount > skipAmount + pageSize,
+                Category = Category,
+                Posts = query.Skip(skipAmount).Take(pageSize).ToList()
+            };
         }
 
         public Post GetPost(int id)
