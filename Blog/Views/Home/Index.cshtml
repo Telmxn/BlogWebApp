@@ -29,14 +29,18 @@
             <span class="title">@post.Title</span>
         </a>
     }
-<div>
+<div class="pages">
     @if (Model.PageNumber > 1)
     {
-        <a asp-action="Index" asp-controller="Home" asp-route-pageNumber="@(Model.PageNumber-1)" asp-route-Category="@Model.Category">Previous Page</a>
+        <a asp-action="Index" asp-controller="Home" asp-route-pageNumber="@(Model.PageNumber-1)" asp-route-Category="@Model.Category">Previous</a>
+    }
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        <a class="@(i == Model.PageNumber ? "active" : "")" asp-action="Index" asp-controller="Home" asp-route-pageNumber="@i" asp-route-Category="@Model.Category">@i</a>
     }
     @if (Model.NextPage)
     {
-        <a asp-action="Index" asp-controller="Home" asp-route-pageNumber="@(Model.PageNumber+1)" asp-route-Category="@Model.Category">Next Page</a>
+        <a asp-action="Index" asp-controller="Home" asp-route-pageNumber="@(Model.PageNumber+1)" asp-route-Category="@Model.Category">Next</a>
     }
 </div>
 </div>

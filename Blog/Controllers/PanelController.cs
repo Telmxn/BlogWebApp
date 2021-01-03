@@ -68,7 +68,7 @@ namespace Blog.Controllers
                 if (!string.IsNullOrEmpty(vm.CurrentImage))
                     _fileManager.RemoveImage(vm.CurrentImage);
 
-                post.Image = await _fileManager.SaveImage(vm.Image);
+                post.Image = _fileManager.SaveImage(vm.Image);
             }
             if (post.Id > 0)
                 _repo.UpdatePost(post);
